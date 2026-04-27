@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visit Italy — Wanderlust Digital Experience</title>
+    <link rel="stylesheet" href="asset/css/stile_mask_text.css?v=11">
+</head>
+<body>
+
+    <!-- FLOATING CTA — Sempre visibile, appare dopo lo scroll dell'hero -->
+    <div class="floating-cta" id="floatingCta">
+        <a href="#download" class="floating-cta-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="15" height="15"><path d="M12 3v13m0 0l-4-4m4 4l4-4M3 20h18"/></svg>
+            Scarica l'App
+        </a>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="logo">Visit <span>Italy</span></div>
+        <button class="nav-toggle" aria-label="Apri menu">
+            <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#app">Funzionalità</a></li>
+            <li><a href="#come-funziona">Come Funziona</a></li>
+            <li><a href="#download" class="nav-cta">Scarica l'App</a></li>
+        </ul>
+    </nav>
+
+    <!-- =============================================
+         SEZIONE 1: HERO — Timed Card Opening
+    ============================================== -->
+    <section class="hero-section hero-carousel-section">
+        <div class="carousel-container" id="heroCarousel">
+            
+            <!-- Slide 0: Roma -->
+            <div class="carousel-card active" data-index="0">
+                <img class="ccard-bg" src="https://images.unsplash.com/photo-1552832230-c0197dd311b5?auto=format&fit=crop&w=1200" alt="Roma">
+                <div class="ccard-overlay"></div>
+                
+                <div class="ccard-content">
+                    <span class="ccard-tag">Eternità</span>
+                    <h1 class="ccard-title">Roma</h1>
+                    <p class="ccard-text">Naviga tra i millenni nella città dove il tempo si è fermato per farti passare.</p>
+                </div>
+                
+                <div class="ccard-inactive-title">Roma</div>
+                
+                <div class="ccard-progress-wrap">
+                    <div class="ccard-progress-bar"></div>
+                </div>
+            </div>
+
+            <!-- Slide 1: Venezia -->
+            <div class="carousel-card" data-index="1">
+                <img class="ccard-bg" src="https://images.unsplash.com/photo-1514890547357-a9ee2887ad8e?auto=format&fit=crop&w=1200" alt="Venezia">
+                <div class="ccard-overlay"></div>
+                
+                <div class="ccard-content">
+                    <span class="ccard-tag">Mistero</span>
+                    <h1 class="ccard-title">Venezia</h1>
+                    <p class="ccard-text">Un labirinto d'acqua dove ogni riflesso nasconde un segreto secolare.</p>
+                </div>
+                
+                <div class="ccard-inactive-title">Venezia</div>
+                
+                <div class="ccard-progress-wrap">
+                    <div class="ccard-progress-bar"></div>
+                </div>
+            </div>
+
+            <!-- Slide 2: Firenze -->
+            <div class="carousel-card" data-index="2">
+                <img class="ccard-bg" src="https://images.unsplash.com/photo-1541123356219-284ebe98ae3b?auto=format&fit=crop&w=1200" alt="Firenze">
+                <div class="ccard-overlay"></div>
+                
+                <div class="ccard-content">
+                    <span class="ccard-tag">Genio</span>
+                    <h1 class="ccard-title">Firenze</h1>
+                    <p class="ccard-text">La culla del Rinascimento, dove l'arte respira insieme a te.</p>
+                </div>
+                
+                <div class="ccard-inactive-title">Firenze</div>
+                
+                <div class="ccard-progress-wrap">
+                    <div class="ccard-progress-bar"></div>
+                </div>
+            </div>
+
+            <!-- Slide 3: Napoli -->
+            <div class="carousel-card" data-index="3">
+                <img class="ccard-bg" src="https://images.unsplash.com/photo-1534063229606-f6d370b4be93?auto=format&fit=crop&w=1200" alt="Napoli">
+                <div class="ccard-overlay"></div>
+                
+                <div class="ccard-content">
+                    <span class="ccard-tag">Passione</span>
+                    <h1 class="ccard-title">Napoli</h1>
+                    <p class="ccard-text">L'anima vibrante e i sapori autentici di un teatro a cielo aperto.</p>
+                </div>
+                
+                <div class="ccard-inactive-title">Napoli</div>
+                
+                <div class="ccard-progress-wrap">
+                    <div class="ccard-progress-bar"></div>
+                </div>
+            </div>
+
+            <!-- Slide 4: Milano -->
+            <div class="carousel-card" data-index="4">
+                <img class="ccard-bg" src="https://images.unsplash.com/photo-1620023472504-20d48fbed5ea?auto=format&fit=crop&w=1200" alt="Milano">
+                <div class="ccard-overlay"></div>
+                
+                <div class="ccard-content">
+                    <span class="ccard-tag">Avanguardia</span>
+                    <h1 class="ccard-title">Milano</h1>
+                    <p class="ccard-text">Dove la creatività, la moda e l'innovazione disegnano il domani.</p>
+                </div>
+                
+                <div class="ccard-inactive-title">Milano</div>
+                
+                <div class="ccard-progress-wrap">
+                    <div class="ccard-progress-bar"></div>
+                </div>
+            </div>
+
+
+
+        </div>
+    </section>
+
+    <main>
+
+        <!-- =============================================
+             SEZIONE 2: PROBLEM / SOLUTION — The Transition
+        ============================================== -->
+        <section class="manifesto-section">
+            <div class="manifesto-inner">
+                <div class="manifesto-left">
+                    <div class="manifesto-eyebrow">/ Perché Visit Italy</div>
+                    <h2 class="manifesto-title">L'Italia<br>non si<br>spiega.</h2>
+                    <h2 class="manifesto-title manifesto-title--accent">Si vive.</h2>
+                    <p class="manifesto-tagline">Con gli strumenti giusti.</p>
+                </div>
+                <div class="manifesto-right">
+                    <p class="manifesto-lead">L'Italia è il Paese più complesso e meraviglioso del mondo. Ogni città ha mille strati, ogni regione un'anima diversa. Serve uno strumento che trasformi questa complessità in pura magia — un viaggio su misura, ogni volta.</p>
+                    <p class="manifesto-sub">Visit Italy è l'app che semplifica l'Italia senza toglierle la sua essenza. Mappe offline, itinerari AI, notifiche in tempo reale: tutta l'Italia, nel tuo palmo.</p>
+                    <div class="manifesto-stat-row">
+                        <div class="manifesto-stat">
+                            <span class="stat-number">500k</span>
+                            <span class="stat-label">Utenti Attivi</span>
+                        </div>
+                        <div class="manifesto-stat">
+                            <span class="stat-number">58</span>
+                            <span class="stat-label">Siti UNESCO</span>
+                        </div>
+                        <div class="manifesto-stat">
+                            <span class="stat-number">350k</span>
+                            <span class="stat-label">Luoghi Segreti</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="manifesto-float" aria-hidden="true">
+                <div class="float-ring float-ring--outer"></div>
+                <div class="float-ring float-ring--inner"></div>
+                <div class="float-crosshair">
+                    <span class="ch-h"></span>
+                    <span class="ch-v"></span>
+                    <span class="ch-dot"></span>
+                </div>
+                <div class="float-label">IT · 2026</div>
+            </div>
+        </section>
+
+        <!-- =============================================
+             SEZIONE 3: PRODUCT-AS-HERO — Bento Grid 2.0
+        ============================================== -->
+        <section class="discovery-section" id="app">
+            <div class="discovery-header">
+                <div class="discovery-header-left">
+                    <div class="discovery-label">/ Le Funzionalità</div>
+                    <h2 class="discovery-title">L'App che<br>cambia tutto</h2>
+                </div>
+                <p class="discovery-sub">Tecnologia avanzata al servizio del viaggiatore moderno.</p>
+            </div>
+
+            <div class="bento-grid">
+
+                <!-- Card 1 (60%) — Mappa Interattiva con badge tech -->
+                <div class="bento-card bento-card--large">
+                    <img src="asset/img/napoli.jpg" alt="Mappa Interattiva">
+                    <div class="bento-tech-badges" aria-hidden="true">
+                        <span class="tech-badge tech-badge--coord">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="10" height="10"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+                            41.9028° N · 12.4964° E
+                        </span>
+                        <span class="tech-badge tech-badge--weather">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="10" height="10"><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/><circle cx="12" cy="12" r="4"/></svg>
+                            22°C · Soleggiato
+                        </span>
+                    </div>
+                    <div class="bento-overlay">
+                        <div class="bento-cat-badge">01 — Mappa</div>
+                        <h3 class="bento-title">Mappa<br>Interattiva</h3>
+                        <p class="bento-desc">Coordinate GPS live, meteo in tempo reale e punti di interesse curati da esperti locali.</p>
+                        <a href="#download" class="scopri-btn">Scopri Funzione →</a>
+                    </div>
+                </div>
+
+                <!-- Card 2 — Notifiche Smart -->
+                <div class="bento-card bento-card--food">
+                    <img src="asset/img/maschioang1.jpg" alt="Notifiche Smart">
+                    <div class="bento-overlay">
+                        <div class="bento-cat-badge">02 — Notifiche</div>
+                        <h3 class="bento-title">Luoghi<br>Segreti</h3>
+                        <p class="bento-desc">Notifiche smart quando sei vicino a un posto nascosto.</p>
+                        <a href="#download" class="scopri-btn">Scopri Funzione →</a>
+                    </div>
+                </div>
+
+                <!-- Card 3 — Offline Mode -->
+                <div class="bento-card bento-card--street">
+                    <img src="asset/img/muralesdiego.jpg" alt="Offline Mode">
+                    <div class="bento-overlay">
+                        <div class="bento-cat-badge">03 — Offline</div>
+                        <h3 class="bento-title">Offline<br>Mode</h3>
+                        <a href="#download" class="scopri-btn">Scopri Funzione →</a>
+                    </div>
+                </div>
+
+                <!-- Card 4 — Percorsi Curati -->
+                <div class="bento-card bento-card--quartieri">
+                    <img src="asset/img/quartieri.jpg" alt="Percorsi Curati">
+                    <div class="bento-overlay">
+                        <div class="bento-cat-badge">Itinerari AI</div>
+                        <h3 class="bento-title">Percorsi<br>Curati</h3>
+                        <a href="#download" class="scopri-btn">Scopri Funzione →</a>
+                    </div>
+                </div>
+
+                <!-- Card 5 — Prenotazioni -->
+                <div class="bento-card bento-card--natura">
+                    <img src="asset/img/napolistreet.jpg" alt="Prenotazioni Dirette">
+                    <div class="bento-overlay">
+                        <div class="bento-cat-badge">04 — Book</div>
+                        <h3 class="bento-title">Prenota<br>in App</h3>
+                        <p class="bento-desc">Hotel, tour e ristoranti senza commissioni.</p>
+                        <a href="#download" class="scopri-btn">Scopri Funzione →</a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- =============================================
+             SEZIONE 4: THE EXPERIENCE LOOP — How It Works
+        ============================================== -->
+        <section class="how-section" id="come-funziona">
+            <div class="how-inner">
+
+                <!-- Step list -->
+                <div class="how-content">
+                    <div class="how-eyebrow">/ Come Funziona</div>
+                    <h2 class="how-title">Tre passi.<br>Infiniti<br>ricordi.</h2>
+
+                    <div class="how-steps">
+                        <div class="how-step active" data-step="0">
+                            <div class="how-step-num">01</div>
+                            <div class="how-step-body">
+                                <h3>Scegli</h3>
+                                <p>Esplora migliaia di destinazioni e filtra per i tuoi interessi: arte, cibo, natura, avventura.</p>
+                            </div>
+                        </div>
+                        <div class="how-step" data-step="1">
+                            <div class="how-step-num">02</div>
+                            <div class="how-step-body">
+                                <h3>Esplora</h3>
+                                <p>Lasciati guidare da mappe offline, notifiche smart e itinerari AI personalizzati in tempo reale.</p>
+                            </div>
+                        </div>
+                        <div class="how-step" data-step="2">
+                            <div class="how-step-num">03</div>
+                            <div class="how-step-body">
+                                <h3>Condividi</h3>
+                                <p>Racconta la tua storia, ispira altri viaggiatori e costruisci la tua collezione di esperienze.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Phone mockup — schermata cambia per step via GSAP ScrollTrigger -->
+                <div class="how-mockup">
+                    <div class="tech-glow"></div>
+                    <div class="tech-phone how-phone">
+                        <div class="phone-notch"></div>
+                        <div class="phone-screen">
+
+                            <!-- Screen 0: Scegli — mappa -->
+                            <div class="how-screen how-screen--active" data-screen="0">
+                                <div class="phone-ui">
+                                    <div class="phone-ui-bar"></div>
+                                    <div class="phone-ui-map">
+                                        <div class="map-grid"></div>
+                                        <div class="map-dot map-dot--1"></div>
+                                        <div class="map-dot map-dot--2"></div>
+                                        <div class="map-dot map-dot--3"></div>
+                                    </div>
+                                    <div class="phone-ui-card">
+                                        <div class="pcard-img"></div>
+                                        <div class="pcard-text">
+                                            <div class="pcard-line pcard-line--wide"></div>
+                                            <div class="pcard-line pcard-line--short"></div>
+                                            <div class="pcard-badge">NAPOLI</div>
+                                        </div>
+                                    </div>
+                                    <div class="phone-ui-tabs">
+                                        <span class="tab-icon tab-active"></span>
+                                        <span class="tab-icon"></span>
+                                        <span class="tab-icon"></span>
+                                        <span class="tab-icon"></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Screen 1: Esplora — notifiche live -->
+                            <div class="how-screen" data-screen="1">
+                                <div class="phone-ui">
+                                    <div class="phone-ui-bar phone-ui-bar--gold"></div>
+                                    <div class="phone-notif-list">
+                                        <div class="phone-notif phone-notif--active">
+                                            <span class="notif-dot"></span>
+                                            <div class="notif-text">
+                                                <div class="notif-line notif-line--title"></div>
+                                                <div class="notif-line notif-line--sub"></div>
+                                            </div>
+                                        </div>
+                                        <div class="phone-notif">
+                                            <span class="notif-dot notif-dot--dim"></span>
+                                            <div class="notif-text">
+                                                <div class="notif-line notif-line--title"></div>
+                                                <div class="notif-line notif-line--sub"></div>
+                                            </div>
+                                        </div>
+                                        <div class="phone-notif">
+                                            <span class="notif-dot notif-dot--dim"></span>
+                                            <div class="notif-text">
+                                                <div class="notif-line notif-line--title"></div>
+                                                <div class="notif-line notif-line--sub"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="phone-ui-card">
+                                        <div class="pcard-img pcard-img--gold"></div>
+                                        <div class="pcard-text">
+                                            <div class="pcard-line pcard-line--wide"></div>
+                                            <div class="pcard-line pcard-line--short"></div>
+                                            <div class="pcard-badge pcard-badge--live">LIVE</div>
+                                        </div>
+                                    </div>
+                                    <div class="phone-ui-tabs">
+                                        <span class="tab-icon"></span>
+                                        <span class="tab-icon tab-active"></span>
+                                        <span class="tab-icon"></span>
+                                        <span class="tab-icon"></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Screen 2: Condividi — griglia foto -->
+                            <div class="how-screen" data-screen="2">
+                                <div class="phone-ui">
+                                    <div class="phone-ui-bar"></div>
+                                    <div class="phone-share-grid">
+                                        <div class="share-img share-img--tall"></div>
+                                        <div class="share-img share-img--sq"></div>
+                                        <div class="share-img share-img--sq share-img--mint"></div>
+                                    </div>
+                                    <div class="phone-ui-card">
+                                        <div class="pcard-img"></div>
+                                        <div class="pcard-text">
+                                            <div class="pcard-line pcard-line--wide"></div>
+                                            <div class="pcard-line pcard-line--short"></div>
+                                            <div class="pcard-badge">CONDIVIDI</div>
+                                        </div>
+                                    </div>
+                                    <div class="phone-ui-tabs">
+                                        <span class="tab-icon"></span>
+                                        <span class="tab-icon"></span>
+                                        <span class="tab-icon tab-active"></span>
+                                        <span class="tab-icon"></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- =============================================
+             SEZIONE 5: SOCIAL PROOF & TRUST
+        ============================================== -->
+        <section class="proof-section">
+
+            <div class="proof-header">
+                <div class="proof-eyebrow">/ Cosa dicono di noi</div>
+                <h2 class="proof-title">Storie vere.<br>Viaggiatori reali.</h2>
+            </div>
+
+            <!-- Testimonials Slider -->
+            <div class="testimonials-wrap">
+                <div class="testimonials-track" id="testimonialsTrack">
+                    <div class="testimonial-card">
+                        <div class="tcard-stars">★★★★★</div>
+                        <blockquote class="tcard-quote">"Ho scoperto angoli di Napoli che non troveresti su nessuna guida. L'app mi ha cambiato il modo di viaggiare."</blockquote>
+                        <div class="tcard-author">
+                            <div class="tcard-avatar"></div>
+                            <div>
+                                <div class="tcard-name">Sophie Laurent</div>
+                                <div class="tcard-origin">Parigi, Francia</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="tcard-stars">★★★★★</div>
+                        <blockquote class="tcard-quote">"Le notifiche in tempo reale sono incredibili. Mi hanno portato a un mercato locale che non avrei mai trovato da solo."</blockquote>
+                        <div class="tcard-author">
+                            <div class="tcard-avatar"></div>
+                            <div>
+                                <div class="tcard-name">James McKinley</div>
+                                <div class="tcard-origin">New York, USA</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="tcard-stars">★★★★★</div>
+                        <blockquote class="tcard-quote">"La modalità offline è stata salvavita nelle zone remote della Toscana. Perfetta anche senza connessione."</blockquote>
+                        <div class="tcard-author">
+                            <div class="tcard-avatar"></div>
+                            <div>
+                                <div class="tcard-name">Yuki Tanaka</div>
+                                <div class="tcard-origin">Tokyo, Giappone</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="tcard-stars">★★★★★</div>
+                        <blockquote class="tcard-quote">"Gli itinerari AI sono sorprendentemente precisi. Ha capito subito il mio stile e ha costruito percorsi perfetti."</blockquote>
+                        <div class="tcard-author">
+                            <div class="tcard-avatar"></div>
+                            <div>
+                                <div class="tcard-name">Amira Hassan</div>
+                                <div class="tcard-origin">Dubai, UAE</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonials-nav">
+                    <button class="tslider-btn tslider-prev" aria-label="Precedente">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14"><path d="M15 18l-6-6 6-6"/></svg>
+                    </button>
+                    <button class="tslider-btn tslider-next" aria-label="Successivo">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Press Logos -->
+            <div class="press-strip">
+                <p class="press-label">Come featured in</p>
+                <div class="press-logos">
+                    <span class="press-logo">Condé Nast Traveler</span>
+                    <span class="press-logo">Lonely Planet</span>
+                    <span class="press-logo">National Geographic</span>
+                    <span class="press-logo">BBC Travel</span>
+                    <span class="press-logo">The Guardian</span>
+                </div>
+            </div>
+
+            <!-- Ticker -->
+            <div class="stories-ticker" aria-hidden="true">
+                <div class="ticker-track">
+                    <span>Arte · Cultura · Paesaggi · Food · Storia · Architettura · Natura · Tradizioni · Musica · Cinema ·&nbsp;</span>
+                    <span>Arte · Cultura · Paesaggi · Food · Storia · Architettura · Natura · Tradizioni · Musica · Cinema ·&nbsp;</span>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- =============================================
+             SEZIONE 6: FINAL CTA — Closing the Deal
+        ============================================== -->
+        <section class="final-cta-section" id="download">
+            <div class="fcta-bg">
+                <img src="asset/img/napoli.jpg" alt="Tramonto su Roma" class="fcta-bg-img">
+                <div class="fcta-overlay"></div>
+            </div>
+            <div class="fcta-inner">
+                <div class="fcta-eyebrow">/ Inizia il tuo viaggio</div>
+                <h2 class="fcta-headline">La tua prossima storia<br>inizia con un tap.</h2>
+                <p class="fcta-sub">Scarica gratuitamente. Disponibile su iOS e Android.</p>
+                <div class="fcta-buttons">
+                    <a href="#" class="store-btn store-btn--apple" aria-label="Scarica su App Store">
+                        <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                        <div class="store-btn-text">
+                            <span class="store-btn-sub">Disponibile su</span>
+                            <span class="store-btn-main">App Store</span>
+                        </div>
+                    </a>
+                    <a href="#" class="store-btn store-btn--google" aria-label="Scarica su Google Play">
+                        <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M3 20.5v-17c0-.83.94-1.3 1.6-.8l14 8.5c.6.36.6 1.24 0 1.6l-14 8.5c-.66.5-1.6.03-1.6-.8z"/></svg>
+                        <div class="store-btn-text">
+                            <span class="store-btn-sub">Disponibile su</span>
+                            <span class="store-btn-main">Google Play</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="fcta-app-stats">
+                    <div class="fcta-stat">
+                        <span class="fcta-stat-num">500k+</span>
+                        <span class="fcta-stat-label">Utenti</span>
+                    </div>
+                    <div class="fcta-stat-div"></div>
+                    <div class="fcta-stat">
+                        <span class="fcta-stat-num">4.9</span>
+                        <span class="fcta-stat-label">Rating</span>
+                    </div>
+                    <div class="fcta-stat-div"></div>
+                    <div class="fcta-stat">
+                        <span class="fcta-stat-num">Gratis</span>
+                        <span class="fcta-stat-label">Download</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="footer-monogram" aria-hidden="true">VISIT<br>ITALY</div>
+        <div class="footer-inner">
+            <div class="footer-top">
+                <div class="footer-brand-block">
+                    <div class="footer-logo">Visit <span>Italy</span></div>
+                    <p class="footer-tagline">Wanderlust Digital Experience</p>
+                </div>
+                <nav class="footer-nav">
+                    <a href="#">Home</a>
+                    <a href="#app">Funzionalità</a>
+                    <a href="#come-funziona">Come Funziona</a>
+                    <a href="#download">Scarica</a>
+                    <a href="#">Contatti</a>
+                </nav>
+            </div>
+            <div class="footer-divider"></div>
+            <div class="footer-bottom">
+                <p class="footer-copy">&copy; 2026 Visit Italy. Tutti i diritti riservati.</p>
+                <div class="footer-socials">
+                    <a href="#" class="social-link" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.334 3.608 1.31.975.975 1.248 2.242 1.31 3.608.058 1.265.07 1.645.07 4.849s-.012 3.584-.07 4.85c-.062 1.366-.334 2.633-1.31 3.608-.975.975-2.242 1.248-3.608 1.31-1.265.058-1.645.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.334-3.608-1.31-.975-.975-1.248-2.242-1.31-3.608C2.175 15.584 2.163 15.204 2.163 12s.012-3.584.07-4.85c.062-1.366.334-2.633 1.31-3.608.975-.975 2.242-1.248 3.608-1.31C8.416 2.175 8.796 2.163 12 2.163zm0-2.163C8.741 0 8.333.014 7.053.072 5.775.131 4.602.425 3.635 1.392 2.668 2.359 2.374 3.532 2.315 4.81 2.257 6.09 2.243 6.499 2.243 12c0 5.502.014 5.91.072 7.19.059 1.278.353 2.451 1.32 3.418.967.967 2.14 1.261 3.418 1.32C8.333 23.986 8.741 24 12 24s3.667-.014 4.947-.072c1.278-.059 2.451-.353 3.418-1.32.967-.967 1.261-2.14 1.32-3.418.058-1.28.072-1.688.072-7.19 0-5.501-.014-5.91-.072-7.19-.059-1.278-.353-2.451-1.32-3.418C19.398.425 18.225.131 16.947.072 15.667.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zm0 10.162a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+                    </a>
+                    <a href="#" class="social-link" aria-label="TikTok">
+                        <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.19 8.19 0 0 0 4.78 1.52V6.75a4.85 4.85 0 0 1-1.01-.06z"/></svg>
+                    </a>
+                    <a href="#" class="social-link" aria-label="X (Twitter)">
+                        <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.402 6.231H2.744l7.737-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- =============================================
+         FLOATING CTA
+    ============================================== -->
+    <div class="floating-cta">
+        <a href="#download" class="pulse-neon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Scarica App
+        </a>
+    </div>
+
+    <!-- Scroll To Top Button -->
+    <button id="btnGoTop" class="btn-go-top" aria-label="Torna in alto">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><polyline points="18 15 12 9 6 15"/></svg>
+    </button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="asset/js/script.js?v=9"></script>
+</body>
+</html>

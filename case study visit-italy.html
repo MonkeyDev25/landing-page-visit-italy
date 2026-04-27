@@ -1,0 +1,1508 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visit Italy — Case Study | Rino Palladino</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    <style>
+        /* ========================
+           TOKENS & RESET
+        ======================== */
+        :root {
+            --bg:           #080D1A;
+            --bg-card:      #0E1527;
+            --bg-card-2:    #111A30;
+            --surface:      #152040;
+            --pure-ice:     #F9FAFC;
+            --mint:         #71FBCA;
+            --mint-dim:     rgba(113, 251, 202, 0.12);
+            --mint-border:  rgba(113, 251, 202, 0.25);
+            --orange:       #FF7A3C;
+            --text:         #C8D0E0;
+            --text-muted:   #5A6A85;
+            --border:       rgba(255,255,255,0.07);
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 16px;
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* ========================
+           NAVBAR
+        ======================== */
+        .navbar {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%;
+            padding: 20px 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 200;
+            background: rgba(8, 13, 26, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border);
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+        .logo img { height: 28px; }
+        .logo-text {
+            font-family: 'Syne', sans-serif;
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--pure-ice);
+            letter-spacing: -0.5px;
+        }
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+            list-style: none;
+        }
+        .nav-links a {
+            color: rgba(200,208,224,0.7);
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: var(--mint); }
+        .nav-cta {
+            color: var(--mint) !important;
+            border: 1px solid var(--mint-border);
+            padding: 8px 20px;
+            border-radius: 20px;
+            transition: background 0.2s, color 0.2s !important;
+        }
+        .nav-cta:hover {
+            background: var(--mint) !important;
+            color: var(--bg) !important;
+        }
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        .nav-toggle span {
+            display: block;
+            width: 24px; height: 2px;
+            background: var(--pure-ice);
+            border-radius: 1px;
+        }
+
+        @media (max-width: 767px) {
+            .nav-toggle { display: flex; }
+            .nav-links {
+                display: none;
+                position: fixed;
+                inset: 0;
+                background: var(--bg);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 40px;
+                z-index: 9999;
+            }
+            .nav-open .nav-links { display: flex; }
+            .nav-links a { font-size: 1.2rem; }
+        }
+
+        /* ========================
+           BREADCRUMB
+        ======================== */
+        .breadcrumb-bar {
+            padding: 120px 32px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--text-muted);
+        }
+        .breadcrumb-bar a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .breadcrumb-bar a:hover { color: var(--mint); }
+        .breadcrumb-bar span { color: var(--mint); }
+        .breadcrumb-slash { color: var(--border); }
+
+        /* ========================
+           HERO SECTION
+        ======================== */
+        .cs-hero {
+            padding: 28px 32px 60px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .cs-hero-label {
+            display: inline-block;
+            font-family: 'Space Mono', monospace;
+            font-size: 11px;
+            letter-spacing: 2px;
+            color: var(--mint);
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            padding: 5px 12px;
+            border: 1px solid var(--mint-border);
+            border-radius: 4px;
+            background: var(--mint-dim);
+        }
+
+        .cs-hero h1 {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(2.4rem, 6vw, 4.2rem);
+            font-weight: 800;
+            color: var(--pure-ice);
+            line-height: 1.08;
+            letter-spacing: -1.5px;
+            margin-bottom: 20px;
+        }
+
+        .cs-hero-sub {
+            font-size: 1.05rem;
+            color: var(--text);
+            max-width: 600px;
+            margin-bottom: 40px;
+            line-height: 1.75;
+        }
+
+        /* Meta bar */
+        .cs-meta {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 48px;
+        }
+        .cs-meta-item {
+            padding: 20px 24px;
+            border-right: 1px solid var(--border);
+        }
+        .cs-meta-item:last-child { border-right: none; }
+        .cs-meta-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+            font-weight: 500;
+        }
+        .cs-meta-value {
+            font-family: 'Space Mono', monospace;
+            font-size: 13px;
+            color: var(--pure-ice);
+            font-weight: 700;
+        }
+
+        @media (max-width: 600px) {
+            .cs-meta { grid-template-columns: repeat(2, 1fr); }
+            .cs-meta-item:nth-child(2) { border-right: none; }
+            .cs-meta-item { border-bottom: 1px solid var(--border); }
+        }
+
+        /* Hero image */
+        .cs-hero-img {
+            width: 100%;
+            border-radius: 16px;
+            overflow: hidden;
+            aspect-ratio: 16/7;
+            position: relative;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+        }
+        .cs-hero-img img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .cs-hero-img-placeholder {
+            width: 100%; height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 16px;
+            background: linear-gradient(135deg, #0E1527 0%, #152040 50%, #0a1830 100%);
+        }
+        .cs-hero-img-placeholder .placeholder-label {
+            font-family: 'Syne', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--pure-ice);
+            letter-spacing: -1px;
+        }
+        .cs-hero-img-placeholder .placeholder-label span { color: var(--mint); }
+        .cs-hero-img-placeholder small {
+            font-size: 12px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+
+        /* Decorative dots on hero image */
+        .img-badge {
+            position: absolute;
+            bottom: 24px;
+            right: 24px;
+            background: rgba(8,13,26,0.85);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--mint-border);
+            border-radius: 40px;
+            padding: 10px 18px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .img-badge-dot {
+            width: 8px; height: 8px;
+            border-radius: 50%;
+            background: var(--mint);
+            animation: pulse 2s ease infinite;
+        }
+        .img-badge span {
+            font-size: 12px;
+            color: var(--pure-ice);
+            font-weight: 500;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(0.8); }
+        }
+
+        /* ========================
+           CONTENT SECTIONS
+        ======================== */
+        .cs-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+
+        .cs-section {
+            padding: 80px 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .cs-section-tag {
+            font-family: 'Space Mono', monospace;
+            font-size: 11px;
+            letter-spacing: 2px;
+            color: var(--mint);
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .cs-section h2 {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+            font-weight: 800;
+            color: var(--pure-ice);
+            letter-spacing: -1px;
+            margin-bottom: 28px;
+            line-height: 1.1;
+        }
+
+        .cs-section p {
+            font-size: 1.05rem;
+            color: var(--text);
+            max-width: 680px;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        /* ========================
+           IL PROCESSO — 4 STEPS
+        ======================== */
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2px;
+            margin-top: 40px;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+        .process-card {
+            background: var(--bg-card);
+            padding: 40px 36px;
+            border-right: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            transition: background 0.2s;
+        }
+        .process-card:hover { background: var(--bg-card-2); }
+        .process-card:nth-child(2), .process-card:nth-child(4) { border-right: none; }
+        .process-card:nth-child(3), .process-card:nth-child(4) { border-bottom: none; }
+
+        .process-num {
+            font-family: 'Space Mono', monospace;
+            font-size: 11px;
+            color: var(--mint);
+            letter-spacing: 2px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            display: block;
+        }
+        .process-card h4 {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--pure-ice);
+            margin-bottom: 12px;
+            letter-spacing: -0.3px;
+        }
+        .process-card p {
+            font-size: 0.95rem;
+            color: var(--text);
+            line-height: 1.7;
+            margin: 0;
+            max-width: none;
+        }
+
+        @media (max-width: 640px) {
+            .process-grid { grid-template-columns: 1fr; }
+            .process-card { border-right: none; border-bottom: 1px solid var(--border); }
+            .process-card:last-child { border-bottom: none; }
+        }
+
+        /* ========================
+           RISULTATI — METRICS
+        ======================== */
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+            margin-top: 48px;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            overflow: hidden;
+        }
+        .result-item {
+            padding: 40px 28px;
+            border-right: 1px solid var(--border);
+            text-align: center;
+        }
+        .result-item:last-child { border-right: none; }
+        .result-num {
+            font-family: 'Syne', sans-serif;
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: var(--mint);
+            line-height: 1;
+            margin-bottom: 10px;
+            display: block;
+        }
+        .result-label {
+            font-size: 13px;
+            color: var(--text-muted);
+            line-height: 1.4;
+        }
+        .results-disclaimer {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 20px;
+            font-style: italic;
+            text-align: center;
+            display: block;
+        }
+
+        @media (max-width: 700px) {
+            .results-grid { grid-template-columns: repeat(2, 1fr); }
+            .result-item:nth-child(2) { border-right: none; }
+            .result-item { border-bottom: 1px solid var(--border); }
+            .result-item:nth-child(3), .result-item:nth-child(4) { border-bottom: none; }
+        }
+
+        /* ========================
+           DESIGN SYSTEM CALLOUT
+        ======================== */
+        .ds-callout {
+            margin-top: 48px;
+            padding: 36px 40px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+        }
+        .ds-callout-label {
+            font-family: 'Space Mono', monospace;
+            font-size: 11px;
+            letter-spacing: 2px;
+            color: var(--mint);
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            display: block;
+        }
+        .ds-colors {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+        .ds-color-swatch {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+        .ds-color-dot {
+            width: 44px; height: 44px;
+            border-radius: 50%;
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+        .ds-color-hex {
+            font-family: 'Space Mono', monospace;
+            font-size: 10px;
+            color: var(--text-muted);
+        }
+        .ds-fonts-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .ds-fonts-list li {
+            display: flex;
+            align-items: baseline;
+            gap: 12px;
+        }
+        .ds-font-role {
+            font-size: 11px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            min-width: 60px;
+        }
+        .ds-font-name-syne {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: var(--pure-ice);
+        }
+        .ds-font-name-inter {
+            font-family: sans-serif;
+            font-size: 1rem;
+            color: var(--text);
+        }
+
+        @media (max-width: 640px) {
+            .ds-callout { grid-template-columns: 1fr; gap: 32px; }
+        }
+
+        /* ========================
+           TECH STACK PILLS
+        ======================== */
+        .tech-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 40px;
+        }
+        .tech-pill {
+            padding: 8px 18px;
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            font-family: 'Space Mono', monospace;
+            font-size: 12px;
+            color: var(--text);
+            background: var(--bg-card);
+            transition: border-color 0.2s, color 0.2s;
+        }
+        .tech-pill:hover { border-color: var(--mint-border); color: var(--mint); }
+
+        /* ========================
+           VISUAL GALLERY
+        ======================== */
+        .gallery-section { padding: 80px 0; border-top: 1px solid var(--border); }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-top: 40px;
+        }
+        .gallery-grid .large {
+            grid-column: span 2;
+        }
+        .gallery-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            aspect-ratio: 16/10;
+            position: relative;
+        }
+        .gallery-item img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        .gallery-item:hover img { transform: scale(1.04); }
+        .gallery-placeholder {
+            width: 100%; height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 8px;
+            background: linear-gradient(135deg, var(--bg-card) 0%, var(--surface) 100%);
+        }
+        .gallery-placeholder-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-muted);
+        }
+        .gallery-placeholder-icon {
+            width: 32px; height: 32px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        /* Mockup-style screens */
+        .mock-hero { background: linear-gradient(145deg, #0a0f1e 0%, #152040 100%); }
+        .mock-bento { background: linear-gradient(145deg, #0d1525 0%, #1a2a45 100%); }
+        .mock-how { background: linear-gradient(145deg, #0a0f1e 0%, #0e1830 100%); }
+        .mock-proof { background: linear-gradient(145deg, #0d1525 0%, #152040 100%); }
+        .mock-cta { background: linear-gradient(145deg, #020309 0%, #0a1525 100%); }
+        .mock-mobile { background: linear-gradient(145deg, #0a0f1e 0%, #162035 100%); aspect-ratio: 9/16 !important; }
+
+        /* Fake screen content */
+        .mock-content {
+            width: 100%; height: 100%;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            position: relative;
+            overflow: hidden;
+        }
+        .mock-bar { height: 4px; border-radius: 2px; background: rgba(255,255,255,0.06); }
+        .mock-bar.mint { background: rgba(113, 251, 202, 0.35); width: 40%; }
+        .mock-bar.wide { width: 75%; }
+        .mock-bar.short { width: 30%; }
+        .mock-title-block { display: flex; flex-direction: column; gap: 5px; margin-top: 8px; }
+        .mock-img-block {
+            flex: 1;
+            border-radius: 6px;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.06);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .mock-tag {
+            width: fit-content;
+            padding: 3px 10px;
+            border-radius: 10px;
+            background: rgba(113, 251, 202, 0.15);
+            border: 1px solid rgba(113, 251, 202, 0.3);
+            font-size: 9px;
+            font-family: 'Space Mono', monospace;
+            color: var(--mint);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .mock-h1 {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(0.9rem, 2.5vw, 1.8rem);
+            font-weight: 800;
+            color: var(--pure-ice);
+            letter-spacing: -0.5px;
+            line-height: 1.1;
+        }
+        .mock-subtitle { font-size: clamp(0.6rem, 1.5vw, 0.8rem); color: var(--text-muted); line-height: 1.4; }
+        .mock-cta-btn {
+            width: fit-content;
+            padding: 5px 14px;
+            border-radius: 20px;
+            background: var(--mint);
+            color: var(--bg);
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-top: 4px;
+        }
+
+        /* Bento mock */
+        .bento-mock-grid {
+            flex: 1;
+            display: grid;
+            grid-template-columns: 1.6fr 1fr;
+            gap: 6px;
+        }
+        .bento-mock-card {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.07);
+            border-radius: 8px;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        .bento-mock-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--mint); }
+        .bento-mock-line { height: 2px; background: rgba(255,255,255,0.08); border-radius: 1px; }
+
+        /* How mock */
+        .how-mock-layout {
+            flex: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+        .how-mock-phone {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 10px;
+        }
+        .how-mock-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .how-mock-step {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.07);
+            border-radius: 6px;
+            padding: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .how-mock-step.active-step { border-color: rgba(113,251,202,0.3); background: rgba(113,251,202,0.05); }
+        .how-mock-step-num {
+            width: 18px; height: 18px;
+            border-radius: 50%;
+            background: rgba(113,251,202,0.15);
+            border: 1px solid rgba(113,251,202,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 8px;
+            color: var(--mint);
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        .how-mock-step-line { flex: 1; height: 2px; background: rgba(255,255,255,0.07); border-radius: 1px; }
+
+        /* CTA mock */
+        .cta-mock-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, transparent 30%, rgba(2,3,9,0.8));
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 16px;
+            gap: 8px;
+        }
+        .cta-mock-store-row { display: flex; gap: 8px; }
+        .cta-mock-store {
+            padding: 6px 12px;
+            border: 1px solid var(--mint-border);
+            border-radius: 8px;
+            background: rgba(113,251,202,0.1);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .cta-mock-store-icon {
+            width: 14px; height: 14px;
+            background: rgba(113,251,202,0.3);
+            border-radius: 3px;
+        }
+        .cta-mock-store-text { font-size: 8px; color: var(--mint); font-weight: 600; }
+
+        /* Proof mock */
+        .proof-mock-cards { flex: 1; display: flex; flex-direction: column; gap: 8px; }
+        .proof-mock-card {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.07);
+            border-radius: 8px;
+            padding: 10px;
+            display: flex;
+            gap: 8px;
+        }
+        .proof-mock-avatar { width: 28px; height: 28px; border-radius: 50%; background: rgba(113,251,202,0.2); flex-shrink: 0; }
+        .proof-mock-text { display: flex; flex-direction: column; gap: 4px; flex: 1; }
+        .proof-mock-stars { color: var(--mint); font-size: 8px; }
+
+        /* Mobile screenshot mock */
+        .mobile-mock-inner {
+            width: 70%;
+            height: 88%;
+            background: var(--bg-card);
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+            overflow: hidden;
+            position: relative;
+        }
+        .mobile-mock-notch {
+            width: 40%;
+            height: 8px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 4px;
+            margin: 10px auto 0;
+        }
+        .mobile-mock-content {
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            height: calc(100% - 28px);
+        }
+
+        /* Gallery vertical items */
+        .gallery-item.tall { aspect-ratio: 3/4; }
+
+        @media (max-width: 768px) {
+            .gallery-grid { grid-template-columns: 1fr; }
+            .gallery-grid .large { grid-column: span 1; }
+            .gallery-item.tall { aspect-ratio: 16/10; }
+        }
+
+        /* ========================
+           VISIT LIVE BUTTON
+        ======================== */
+        .visit-live-wrap {
+            margin-top: 40px;
+            display: flex;
+            justify-content: center;
+        }
+        .visit-live-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 32px;
+            background: var(--mint);
+            color: var(--bg);
+            text-decoration: none;
+            border-radius: 40px;
+            font-weight: 700;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+            transition: opacity 0.2s, transform 0.2s;
+        }
+        .visit-live-btn:hover { opacity: 0.88; transform: translateY(-2px); }
+
+        /* ========================
+           FINAL CTA SECTION
+        ======================== */
+        .final-cta {
+            border-top: 1px solid var(--border);
+            padding: 100px 32px;
+            text-align: center;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .final-cta-tag {
+            display: inline-block;
+            font-family: 'Space Mono', monospace;
+            font-size: 11px;
+            letter-spacing: 2px;
+            color: var(--mint);
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+        .final-cta h2 {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 800;
+            color: var(--pure-ice);
+            letter-spacing: -1.5px;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+        .final-cta p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            margin-bottom: 40px;
+        }
+        .final-cta-btns {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 32px;
+            background: var(--mint);
+            color: var(--bg);
+            text-decoration: none;
+            border-radius: 40px;
+            font-weight: 700;
+            font-size: 14px;
+            transition: opacity 0.2s, transform 0.2s;
+        }
+        .btn-primary:hover { opacity: 0.88; transform: translateY(-2px); }
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 32px;
+            border: 1px solid var(--border);
+            color: var(--text);
+            text-decoration: none;
+            border-radius: 40px;
+            font-weight: 500;
+            font-size: 14px;
+            transition: border-color 0.2s, color 0.2s;
+        }
+        .btn-secondary:hover { border-color: var(--mint-border); color: var(--mint); }
+
+        /* ========================
+           NEXT PROJECT / FOOTER
+        ======================== */
+        .next-project-strip {
+            border-top: 1px solid var(--border);
+            padding: 48px 32px;
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+        }
+        .next-project-strip a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .next-project-strip a:hover { color: var(--mint); }
+        .next-link {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--pure-ice) !important;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .next-link:hover { color: var(--mint) !important; }
+
+        .site-footer {
+            border-top: 1px solid var(--border);
+            padding: 60px 32px 32px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .footer-inner {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+        .footer-logo-text {
+            font-family: 'Syne', sans-serif;
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--pure-ice);
+            margin-bottom: 12px;
+        }
+        .footer-tagline {
+            font-size: 13px;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+        .footer-col-title {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--text-muted);
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        .footer-nav { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+        .footer-nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.2s;
+        }
+        .footer-nav a:hover { color: var(--mint); }
+        .footer-bottom {
+            border-top: 1px solid var(--border);
+            padding-top: 28px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+        }
+        .footer-copy {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+        .footer-legal { display: flex; gap: 20px; }
+        .footer-legal a {
+            font-size: 12px;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .footer-legal a:hover { color: var(--mint); }
+
+        @media (max-width: 768px) {
+            .footer-inner { grid-template-columns: 1fr 1fr; }
+            .next-project-strip { flex-direction: column; align-items: flex-start; }
+            .footer-bottom { flex-direction: column; align-items: flex-start; }
+            .breadcrumb-bar, .cs-hero, .cs-content { padding-left: 20px; padding-right: 20px; }
+            .final-cta { padding: 70px 20px; }
+            .next-project-strip { padding: 40px 20px; }
+            .site-footer { padding: 50px 20px 28px; }
+        }
+        @media (max-width: 480px) {
+            .footer-inner { grid-template-columns: 1fr; }
+            .navbar { padding: 18px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ======================== NAVBAR ======================== -->
+    <nav class="navbar">
+        <a href="https://rinopalladino.it/index.html" class="logo">
+            <span class="logo-text">Rino Palladino</span>
+        </a>
+        <button class="nav-toggle" aria-label="Apri menu">
+            <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-links">
+            <li><a href="https://rinopalladino.it/index.html">Home</a></li>
+            <li><a href="https://rinopalladino.it/index.html#chisono">Chi sono</a></li>
+            <li><a href="https://rinopalladino.it/index.html#portfolio">Portfolio</a></li>
+            <li><a href="https://rinopalladino.it/index.html#servizi">Servizi</a></li>
+            <li><a href="https://rinopalladino.it/index.html#contatti" class="nav-cta">Prenota</a></li>
+        </ul>
+    </nav>
+
+    <!-- ======================== BREADCRUMB ======================== -->
+    <div class="breadcrumb-bar">
+        <a href="https://rinopalladino.it/index.html#portfolio">Portfolio</a>
+        <span class="breadcrumb-slash">/</span>
+        <span>Visit Italy</span>
+        <span class="breadcrumb-slash">/</span>
+        <span>Landing Page · App</span>
+    </div>
+
+    <!-- ======================== HERO ======================== -->
+    <div class="cs-hero">
+
+        <div class="cs-hero-label">Landing Page &amp; Design System</div>
+
+        <h1>Visit Italy<br>Wanderlust Digital<br>Experience</h1>
+
+        <p class="cs-hero-sub">
+            Una landing page conversion-first per un'app di travel discovery sull'Italia. 
+            Dal funnel strategico al codice: GSAP, Tailwind e un design system orientato al download.
+        </p>
+
+        <!-- Meta -->
+        <div class="cs-meta">
+            <div class="cs-meta-item">
+                <div class="cs-meta-label">Cliente</div>
+                <div class="cs-meta-value">Visit Italy</div>
+            </div>
+            <div class="cs-meta-item">
+                <div class="cs-meta-label">Ruolo</div>
+                <div class="cs-meta-value">Brand Designer &amp; Developer</div>
+            </div>
+            <div class="cs-meta-item">
+                <div class="cs-meta-label">Anno</div>
+                <div class="cs-meta-value">2025</div>
+            </div>
+            <div class="cs-meta-item">
+                <div class="cs-meta-label">Tech</div>
+                <div class="cs-meta-value">Figma · HTML · Tailwind · GSAP</div>
+            </div>
+        </div>
+
+        <!-- Hero visual: mockup della sezione hero della landing -->
+        <div class="cs-hero-img">
+            <div class="cs-hero-img-placeholder mock-hero">
+                <div class="mock-content" style="padding: 24px 28px;">
+                    <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom: 12px;">
+                        <div style="font-family:'Syne',sans-serif; font-weight:800; font-size:clamp(14px,2.5vw,20px); color:#F9FAFC; letter-spacing:-0.5px;">Visit <span style="color:#71FBCA">Italy</span></div>
+                        <div style="display:flex; gap:16px;">
+                            <div class="mock-bar" style="width:50px; height:2px;"></div>
+                            <div class="mock-bar" style="width:50px; height:2px;"></div>
+                            <div class="mock-bar mint" style="width:70px; height:2px;"></div>
+                        </div>
+                    </div>
+                    <div style="display:grid; grid-template-columns: 1.4fr repeat(3, 1fr); gap: 6px; flex:1; min-height:0; height: calc(100% - 48px);">
+                        <!-- Card attiva grande -->
+                        <div style="background: linear-gradient(160deg, #1a3060 0%, #0a1525 100%); border-radius:10px; position:relative; overflow:hidden; padding: 18px; display:flex; flex-direction:column; justify-content:flex-end; border: 1px solid rgba(113,251,202,0.2);">
+                            <div style="position:absolute; top:12px; left:12px;" class="mock-tag">Eternità</div>
+                            <div class="mock-h1">Roma</div>
+                            <div class="mock-subtitle">Naviga tra i millenni nella città eterna.</div>
+                            <div style="position:absolute; bottom: 0; left:0; right:0; height:3px; background: rgba(113,251,202,0.15); border-radius: 0 0 10px 10px;">
+                                <div style="width:60%; height:100%; background:#71FBCA; border-radius:inherit;"></div>
+                            </div>
+                        </div>
+                        <!-- Card piccola 1 -->
+                        <div style="background: rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.06); border-radius:10px; padding:10px; display:flex; align-items:flex-end;">
+                            <div style="font-family:'Syne',sans-serif; font-weight:800; font-size:clamp(12px, 2vw, 18px); color:rgba(249,250,252,0.5);">Firenze</div>
+                        </div>
+                        <!-- Card piccola 2 -->
+                        <div style="background: rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.06); border-radius:10px; padding:10px; display:flex; align-items:flex-end;">
+                            <div style="font-family:'Syne',sans-serif; font-weight:800; font-size:clamp(12px, 2vw, 18px); color:rgba(249,250,252,0.5);">Napoli</div>
+                        </div>
+                        <!-- Card piccola 3 -->
+                        <div style="background: rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.06); border-radius:10px; padding:10px; display:flex; align-items:flex-end;">
+                            <div style="font-family:'Syne',sans-serif; font-weight:800; font-size:clamp(12px, 2vw, 18px); color:rgba(249,250,252,0.5);">Venezia</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="img-badge">
+                <div class="img-badge-dot"></div>
+                <span>Hero Carousel — Sezione 1</span>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ======================== CONTENT ======================== -->
+    <div class="cs-content">
+
+        <!-- IL BRIEF -->
+        <section class="cs-section">
+            <span class="cs-section-tag">Il Brief</span>
+            <h2>La sfida</h2>
+            <p>
+                Visit Italy è un'app di travel discovery pensata per rendere l'Italia accessibile e immersiva a un pubblico internazionale. Il problema: esisteva il prodotto, non esisteva una presenza digitale capace di comunicarlo. Nessuna landing page, nessun sistema visivo, nessun funnel di conversione.
+            </p>
+            <p>
+                Il brief era ambizioso — costruire da zero un'experience che trasformasse l'ispirazione visiva in azione concreta: il download dell'app. Tutto doveva essere progettato con una logica conversion-first, senza rinunciare all'estetica "wanderlust premium" che il brand richiedeva.
+            </p>
+        </section>
+
+        <!-- L'OBIETTIVO -->
+        <section class="cs-section">
+            <span class="cs-section-tag">L'obiettivo</span>
+            <h2>Cosa dovevamo ottenere</h2>
+            <p>
+                Una landing page a singola pagina strutturata come un funnel in sei sezioni, ciascuna con un obiettivo preciso nel percorso dell'utente. Mobile-first come priorità assoluta — l'app è mobile, l'utente è mobile. Animazioni GSAP integrate con ScrollTrigger per creare un'esperienza viva, non una pagina statica. Un design system coerente e scalabile documentato su Figma.
+            </p>
+            <p>
+                Niente template. Niente soluzioni generiche. Un progetto costruito con una visione chiara sulla conversione, dall'architettura dell'informazione fino all'ultima riga di CSS.
+            </p>
+        </section>
+
+        <!-- IL PROCESSO -->
+        <section class="cs-section">
+            <span class="cs-section-tag">Il Processo</span>
+            <h2>Come ci siamo arrivati</h2>
+
+            <div class="process-grid">
+                <div class="process-card">
+                    <span class="process-num">01</span>
+                    <h4>Strategy &amp; Funnel Architecture</h4>
+                    <p>Definizione dell'architettura della landing in sei sezioni-funnel: Hero → Problem/Solution → Product Features → How It Works → Social Proof → Final CTA. Ogni sezione risponde a una specifica obiezione psicologica del visitatore. Nessun elemento è decorativo: tutto spinge verso il download.</p>
+                </div>
+                <div class="process-card">
+                    <span class="process-num">02</span>
+                    <h4>Design System &amp; Visual Identity</h4>
+                    <p>Costruzione del design system da zero su Figma con Tokens Studio. Palette a tre variabili: <strong style="color: #F9FAFC;">#F9FAFC</strong> (Pure Ice) per sfondi, <strong style="color: #020309; background:#F9FAFC; padding: 0 4px; border-radius:2px;">#020309</strong> (Obsidian) per i testi, <strong style="color: #71FBCA;">#71FBCA</strong> (Neon Mint) riservato esclusivamente a CTA e indicatori attivi. Syne 800 per i titoli, Inter per il corpo.</p>
+                </div>
+                <div class="process-card">
+                    <span class="process-num">03</span>
+                    <h4>UI Design su Figma</h4>
+                    <p>Progettazione mobile-first di ogni sezione: Hero carousel con progress bar animate, Bento Grid 2.0 per le funzionalità, sezione "How It Works" con phone mockup interattivo, testimonials slider, e Final CTA con badge store ufficiali. Ogni componente validato prima di scrivere una riga di codice.</p>
+                </div>
+                <div class="process-card">
+                    <span class="process-num">04</span>
+                    <h4>Sviluppo &amp; Animazioni</h4>
+                    <p>Build in HTML5 + Tailwind CSS (utility-first) + GSAP con ScrollTrigger per tutte le animazioni scroll-driven. Carousel hero con autoplay e progress bar via GSAP timeline. Phone mockup sincronizzato ai click. Floating CTA persistente. Lazy loading su tutti i media. Ottimizzato per mobile con particolare attenzione alla thumb zone.</p>
+                </div>
+            </div>
+
+            <!-- Design System callout -->
+            <div class="ds-callout">
+                <div>
+                    <span class="ds-callout-label">Palette colori</span>
+                    <div class="ds-colors">
+                        <div class="ds-color-swatch">
+                            <div class="ds-color-dot" style="background:#F9FAFC;"></div>
+                            <span class="ds-color-hex">#F9FAFC</span>
+                        </div>
+                        <div class="ds-color-swatch">
+                            <div class="ds-color-dot" style="background:#020309; border-color:rgba(255,255,255,0.15);"></div>
+                            <span class="ds-color-hex">#020309</span>
+                        </div>
+                        <div class="ds-color-swatch">
+                            <div class="ds-color-dot" style="background:#71FBCA;"></div>
+                            <span class="ds-color-hex">#71FBCA</span>
+                        </div>
+                        <div class="ds-color-swatch">
+                            <div class="ds-color-dot" style="background:#94A3B8;"></div>
+                            <span class="ds-color-hex">#94A3B8</span>
+                        </div>
+                    </div>
+                    <div style="font-size:12px; color:var(--text-muted); line-height:1.6;">
+                        Il Neon Mint è usato in modo <em>chirurgico</em> — solo per CTA, progress bar e indicatori attivi. Nessun elemento decorativo lo usa. Questo mantiene alto il valore semantico del colore d'azione.
+                    </div>
+                </div>
+                <div>
+                    <span class="ds-callout-label">Tipografia</span>
+                    <ul class="ds-fonts-list">
+                        <li>
+                            <span class="ds-font-role">Display</span>
+                            <span class="ds-font-name-syne">Syne 800</span>
+                        </li>
+                        <li>
+                            <span class="ds-font-role">Body / UI</span>
+                            <span class="ds-font-name-inter">Inter 400–600</span>
+                        </li>
+                    </ul>
+                    <div style="margin-top:20px; font-size:12px; color:var(--text-muted); line-height:1.6;">
+                        Syne porta carattere editoriale e peso visivo nei titoli. Inter garantisce leggibilità e fiducia nel copy UI. Una coppia funzionale prima che estetica.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tech pills -->
+            <div class="tech-pills">
+                <span class="tech-pill">HTML5</span>
+                <span class="tech-pill">Tailwind CSS</span>
+                <span class="tech-pill">GSAP 3</span>
+                <span class="tech-pill">ScrollTrigger</span>
+                <span class="tech-pill">Figma</span>
+                <span class="tech-pill">Tokens Studio</span>
+                <span class="tech-pill">Vanilla JS</span>
+                <span class="tech-pill">Mobile-First</span>
+            </div>
+        </section>
+
+        <!-- I RISULTATI -->
+        <section class="cs-section">
+            <span class="cs-section-tag">I Risultati</span>
+            <h2>Cosa abbiamo ottenuto</h2>
+
+            <div class="results-grid">
+                <div class="result-item">
+                    <span class="result-num">6</span>
+                    <div class="result-label">Sezioni funnel<br>complete</div>
+                </div>
+                <div class="result-item">
+                    <span class="result-num">100</span>
+                    <div class="result-label">Punteggio<br>Performance Lighthouse</div>
+                </div>
+                <div class="result-item">
+                    <span class="result-num">&lt;200</span>
+                    <div class="result-label">KB JavaScript<br>custom (GSAP escluso)</div>
+                </div>
+                <div class="result-item">
+                    <span class="result-num">100%</span>
+                    <div class="result-label">Mobile-first<br>design approach</div>
+                </div>
+            </div>
+            <span class="results-disclaimer">I dati riportati sono indicativi e riferiti a un progetto dimostrativo. Non rappresentano risultati reali certificati.</span>
+        </section>
+
+    </div>
+
+    <!-- ======================== GALLERY ======================== -->
+    <div class="cs-content">
+        <section class="gallery-section">
+            <span class="cs-section-tag">Visual</span>
+            <h2 style="font-family:'Syne',sans-serif; font-size:clamp(1.8rem,3.5vw,2.8rem); font-weight:800; color:var(--pure-ice); letter-spacing:-1px; margin-bottom:8px;">Il progetto in immagini</h2>
+            <p style="color:var(--text-muted); font-size:0.95rem; margin-bottom:0;">Dall'hero carousel alla final CTA — ogni sezione costruita per convertire.</p>
+
+            <div class="gallery-grid">
+
+                <!-- 1: Hero section -->
+                <div class="gallery-item large">
+                    <div class="mock-content mock-hero" style="background: linear-gradient(135deg, #0a0f1e 0%, #1a2a45 100%); padding:28px; display:flex; flex-direction:column; gap:16px; height:100%;">
+                        <div class="mock-tag" style="align-self:flex-start;">Sezione 1 — Hero</div>
+                        <div style="font-family:'Syne',sans-serif; font-size:clamp(1.2rem, 3vw, 2.2rem); font-weight:800; color:#F9FAFC; letter-spacing:-0.5px; line-height:1.1;">Timed Card Opening<br>con progress bar GSAP</div>
+                        <div style="display:grid; grid-template-columns: 1.6fr 1fr 1fr; gap:6px; flex:1;">
+                            <div style="background:rgba(113,251,202,0.08); border:1px solid rgba(113,251,202,0.25); border-radius:8px; padding:12px; display:flex; flex-direction:column; justify-content:flex-end; gap:6px; position:relative;">
+                                <div style="position:absolute; bottom:0; left:0; right:0; height:3px; background:rgba(113,251,202,0.15); border-radius:0 0 8px 8px;"><div style="width:70%; height:100%; background:#71FBCA; border-radius:inherit;"></div></div>
+                                <div style="font-family:'Syne',sans-serif; font-weight:800; color:#F9FAFC; font-size:clamp(1rem, 2.5vw, 1.6rem);">Roma</div>
+                                <div class="mock-bar" style="width:80%; height:2px;"></div>
+                            </div>
+                            <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.06); border-radius:8px; padding:12px; display:flex; align-items:flex-end;"><div style="font-family:'Syne',sans-serif; font-weight:800; color:rgba(249,250,252,0.4); font-size:clamp(0.9rem, 2vw, 1.3rem);">Firenze</div></div>
+                            <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.06); border-radius:8px; padding:12px; display:flex; align-items:flex-end;"><div style="font-family:'Syne',sans-serif; font-weight:800; color:rgba(249,250,252,0.4); font-size:clamp(0.9rem, 2vw, 1.3rem);">Venezia</div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2: Bento grid -->
+                <div class="gallery-item">
+                    <div class="mock-content mock-bento" style="background: linear-gradient(135deg, #0d1525 0%, #1a2a45 100%); padding:20px;">
+                        <div class="mock-tag" style="margin-bottom:10px;">Sezione 3 — Bento Grid</div>
+                        <div class="bento-mock-grid" style="flex:1;">
+                            <div class="bento-mock-card" style="display:flex; flex-direction:column; gap:6px; justify-content:space-between;">
+                                <div class="bento-mock-dot"></div>
+                                <div style="font-family:'Syne',sans-serif; font-weight:800; color:#F9FAFC; font-size:clamp(0.75rem,1.5vw,1rem); line-height:1.2;">Mappa<br>Interattiva</div>
+                                <div style="display:flex; flex-direction:column; gap:3px;">
+                                    <div class="bento-mock-line"></div>
+                                    <div class="bento-mock-line" style="width:60%;"></div>
+                                </div>
+                            </div>
+                            <div style="display:flex; flex-direction:column; gap:6px;">
+                                <div class="bento-mock-card" style="flex:1; justify-content:space-between;">
+                                    <div class="bento-mock-dot"></div>
+                                    <div class="bento-mock-line"></div>
+                                </div>
+                                <div class="bento-mock-card" style="flex:1; justify-content:space-between;">
+                                    <div class="bento-mock-dot"></div>
+                                    <div class="bento-mock-line"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3: How it works -->
+                <div class="gallery-item">
+                    <div class="mock-content mock-how" style="background: linear-gradient(135deg, #0a0f1e 0%, #0e1830 100%); padding:20px;">
+                        <div class="mock-tag" style="margin-bottom:10px;">Sezione 4 — How It Works</div>
+                        <div class="how-mock-layout" style="flex:1;">
+                            <div class="how-mock-phone" style="border-radius:12px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); display:flex; flex-direction:column; padding:8px; gap:4px;">
+                                <div style="height:6px; background:rgba(255,255,255,0.05); border-radius:3px; width:40%; margin:0 auto;"></div>
+                                <div style="flex:1; background:rgba(113,251,202,0.06); border-radius:6px; border:1px solid rgba(113,251,202,0.15);"></div>
+                            </div>
+                            <div class="how-mock-steps">
+                                <div class="how-mock-step active-step">
+                                    <div class="how-mock-step-num">1</div>
+                                    <div class="how-mock-step-line"></div>
+                                </div>
+                                <div class="how-mock-step">
+                                    <div class="how-mock-step-num" style="background:rgba(255,255,255,0.04); border-color:rgba(255,255,255,0.1); color:var(--text-muted);">2</div>
+                                    <div class="how-mock-step-line"></div>
+                                </div>
+                                <div class="how-mock-step">
+                                    <div class="how-mock-step-num" style="background:rgba(255,255,255,0.04); border-color:rgba(255,255,255,0.1); color:var(--text-muted);">3</div>
+                                    <div class="how-mock-step-line"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4: Social proof -->
+                <div class="gallery-item">
+                    <div class="mock-content mock-proof" style="background: linear-gradient(135deg, #0d1525 0%, #152040 100%); padding:20px;">
+                        <div class="mock-tag" style="margin-bottom:10px;">Sezione 5 — Social Proof</div>
+                        <div class="proof-mock-cards">
+                            <div class="proof-mock-card">
+                                <div class="proof-mock-avatar"></div>
+                                <div class="proof-mock-text">
+                                    <div class="proof-mock-stars">★★★★★</div>
+                                    <div class="mock-bar" style="width:90%; height:2px; margin-top:4px;"></div>
+                                    <div class="mock-bar" style="width:70%; height:2px; margin-top:3px;"></div>
+                                </div>
+                            </div>
+                            <div class="proof-mock-card">
+                                <div class="proof-mock-avatar" style="background:rgba(255,165,90,0.2);"></div>
+                                <div class="proof-mock-text">
+                                    <div class="proof-mock-stars">★★★★★</div>
+                                    <div class="mock-bar" style="width:80%; height:2px; margin-top:4px;"></div>
+                                    <div class="mock-bar" style="width:55%; height:2px; margin-top:3px;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5: Final CTA (large) -->
+                <div class="gallery-item large">
+                    <div class="mock-content mock-cta" style="background: linear-gradient(135deg, #020309 0%, #0a1525 100%); padding:32px; justify-content:center; align-items:center; text-align:center; gap:16px;">
+                        <div class="mock-tag">Sezione 6 — Final CTA</div>
+                        <div style="font-family:'Syne',sans-serif; font-size:clamp(1.1rem, 3vw, 2rem); font-weight:800; color:#F9FAFC; letter-spacing:-0.5px; line-height:1.15; max-width:380px;">La tua prossima storia<br>inizia con un tap.</div>
+                        <div class="cta-mock-store-row" style="justify-content:center;">
+                            <div class="cta-mock-store">
+                                <div class="cta-mock-store-icon"></div>
+                                <span class="cta-mock-store-text">App Store</span>
+                            </div>
+                            <div class="cta-mock-store">
+                                <div class="cta-mock-store-icon"></div>
+                                <span class="cta-mock-store-text">Play Store</span>
+                            </div>
+                        </div>
+                        <div style="font-size:11px; color:var(--text-muted);">500k+ viaggiatori la usano ogni giorno</div>
+                    </div>
+                </div>
+
+                <!-- 6: Mobile view -->
+                <div class="gallery-item" style="aspect-ratio: 4/3;">
+                    <div style="width:100%; height:100%; background: linear-gradient(135deg, #0a0f1e 0%, #162035 100%); display:flex; align-items:center; justify-content:center; padding:16px;">
+                        <div class="mobile-mock-inner" style="width:55%; height:92%; border-radius:22px; border:1px solid rgba(255,255,255,0.12);">
+                            <div class="mobile-mock-notch"></div>
+                            <div class="mobile-mock-content">
+                                <div class="mock-tag">Floating CTA</div>
+                                <div style="flex:1; background:rgba(255,255,255,0.03); border-radius:8px;"></div>
+                                <div style="padding:6px 12px; background:#71FBCA; border-radius:20px; text-align:center;">
+                                    <span style="font-size:10px; font-weight:700; color:#020309; letter-spacing:0.5px;">Scarica l'App</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Visit live button -->
+            <div class="visit-live-wrap">
+                <a href="#" class="visit-live-btn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="15" height="15"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
+                    Visita la Landing Page
+                </a>
+            </div>
+
+        </section>
+    </div>
+
+    <!-- ======================== FINAL CTA ======================== -->
+    <div class="final-cta">
+        <div class="final-cta-tag">Vuoi un progetto simile?</div>
+        <h2>Prenota una call<br>gratuita e parliamone.</h2>
+        <p>Possiamo costruire insieme la tua prossima landing page, design system o presenza digitale da zero.</p>
+        <div class="final-cta-btns">
+            <a href="https://rinopalladino.it/index.html#contatti" class="btn-primary">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14"><path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                Prenota una call
+            </a>
+            <a href="https://rinopalladino.it/index.html#portfolio" class="btn-secondary">
+                ← Tutti i progetti
+            </a>
+        </div>
+    </div>
+
+    <!-- ======================== NEXT PROJECT ======================== -->
+    <div class="next-project-strip">
+        <a href="https://rinopalladino.it/index.html#portfolio">← Tutti i progetti</a>
+        <a href="https://rinopalladino.it/osteria-del-sud.html" class="next-link">
+            Osteria del Sud →
+        </a>
+    </div>
+
+    <!-- ======================== FOOTER ======================== -->
+    <footer>
+        <div class="site-footer">
+            <div class="footer-inner">
+                <div>
+                    <div class="footer-logo-text">Rino Palladino</div>
+                    <p class="footer-tagline">Brand Designer &amp; Developer.<br>Costruisco brand da zero, pensando prima e disegnando dopo.</p>
+                </div>
+                <div>
+                    <div class="footer-col-title">Menù</div>
+                    <ul class="footer-nav">
+                        <li><a href="https://rinopalladino.it/index.html">Home</a></li>
+                        <li><a href="https://rinopalladino.it/index.html#chisono">Chi sono</a></li>
+                        <li><a href="https://rinopalladino.it/index.html#portfolio">Portfolio</a></li>
+                        <li><a href="https://rinopalladino.it/index.html#servizi">Servizi</a></li>
+                        <li><a href="https://rinopalladino.it/index.html#contatti">Contatti</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <div class="footer-col-title">Legal</div>
+                    <ul class="footer-nav">
+                        <li><a href="https://www.iubenda.com/privacy-policy/79520808">Privacy Policy</a></li>
+                        <li><a href="https://www.iubenda.com/privacy-policy/79520808/cookie-policy">Cookie Policy</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <div class="footer-col-title">Contatti</div>
+                    <ul class="footer-nav">
+                        <li><a href="https://rinopalladino.it/index.html#contatti">Prenota un appuntamento</a></li>
+                        <li><a href="mailto:rinopalladino25@gmail.com">rinopalladino25@gmail.com</a></li>
+                        <li><a href="https://api.whatsapp.com/send?phone=+393509858106">+39 350 985 8106</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span class="footer-copy">© 2026 Rino Palladino Designer &amp; Developer. Tutti i diritti riservati.</span>
+                <div class="footer-legal">
+                    <a href="https://www.iubenda.com/privacy-policy/79520808">Privacy</a>
+                    <a href="https://www.iubenda.com/privacy-policy/79520808/cookie-policy">Cookie</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile nav toggle
+        const navToggle = document.querySelector(".nav-toggle");
+        if (navToggle) {
+            navToggle.addEventListener("click", () => {
+                document.body.classList.toggle("nav-open");
+            });
+            document.querySelectorAll(".nav-links a").forEach(link => {
+                link.addEventListener("click", () => {
+                    document.body.classList.remove("nav-open");
+                });
+            });
+        }
+
+        // Subtle entrance animations
+        const observerOptions = { threshold: 0.12, rootMargin: "0px 0px -40px 0px" };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = "1";
+                    entry.target.style.transform = "translateY(0)";
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll(".cs-section, .gallery-section, .process-card, .result-item, .gallery-item, .ds-callout").forEach(el => {
+            el.style.opacity = "0";
+            el.style.transform = "translateY(24px)";
+            el.style.transition = "opacity 0.65s ease, transform 0.65s ease";
+            observer.observe(el);
+        });
+
+        // Stagger process cards
+        document.querySelectorAll(".process-card").forEach((card, i) => {
+            card.style.transitionDelay = `${i * 0.08}s`;
+        });
+        document.querySelectorAll(".result-item").forEach((item, i) => {
+            item.style.transitionDelay = `${i * 0.07}s`;
+        });
+        document.querySelectorAll(".gallery-item").forEach((item, i) => {
+            item.style.transitionDelay = `${i * 0.06}s`;
+        });
+    </script>
+
+</body>
+</html>
