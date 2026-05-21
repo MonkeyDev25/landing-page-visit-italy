@@ -138,17 +138,6 @@ document.addEventListener("DOMContentLoaded", () => {
         );
 
         // --- Sezione 4: How It Works (ex Tech Highlight) ---
-        // Phone slides in from left
-        gsap.fromTo(".tech-phone",
-            { x: -50, opacity: 0, rotateY: 12 },
-            {
-                x: 0, opacity: 1, rotateY: 0,
-                duration: 1.2, ease: "power3.out",
-                scrollTrigger: { trigger: ".how-section", start: "top 78%" }
-            }
-        );
-
-        // Right content stagger
         const techTl = gsap.timeline({
             scrollTrigger: { trigger: ".how-section", start: "top 78%" }
         });
@@ -159,25 +148,13 @@ document.addEventListener("DOMContentLoaded", () => {
             )
             .fromTo(".how-title",
                 { y: 50, opacity: 0 },
-                { y: 0, opacity: 1, duration: 1, ease: "power3.out" },
+                { y: 0, opacity: 1, duration: 0.9, ease: "power3.out" },
                 "-=0.2"
             )
             .fromTo(".how-step",
                 { x: 28, opacity: 0 },
                 { x: 0, opacity: 1, duration: 0.55, ease: "power2.out", stagger: 0.1 },
-                "-=0.3"
             );
-
-        // Map dots pulse
-        gsap.to(".map-dot", {
-            scale: 1.8,
-            opacity: 0.3,
-            duration: 1.1,
-            ease: "power1.inOut",
-            repeat: -1,
-            yoyo: true,
-            stagger: { each: 0.4, repeat: -1 }
-        });
 
         // --- Sezione 5: Social Proof (ex Stories) ---
         const proofTl = gsap.timeline({
@@ -252,28 +229,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // ========================
-    // HOW IT WORKS: SCREEN SYNC
-    // ========================
-    const howSteps = document.querySelectorAll(".how-step");
-    const howScreens = document.querySelectorAll(".how-screen");
-    
-    if (howSteps.length > 0 && howScreens.length > 0) {
-        howSteps.forEach((step, index) => {
-            step.addEventListener("click", () => {
-                // Update active step
-                howSteps.forEach(s => s.classList.remove("active"));
-                step.classList.add("active");
-                
-                // Slide screens
-                howScreens.forEach((screen) => {
-                    screen.style.transform = `translateX(-${index * 100}%)`;
-                });
-            });
-        });
-    }
 
-    // ========================
-    // SOCIAL PROOF: SLIDER NAV
+        // SOCIAL PROOF: SLIDER NAV
     // ========================
     const testTrack = document.getElementById("testimonialsTrack");
     const tPrev = document.querySelector(".tslider-prev");
@@ -316,6 +273,49 @@ document.addEventListener("DOMContentLoaded", () => {
             link.addEventListener("click", () => {
                 document.body.classList.remove("nav-open");
             });
+        });
+    }
+
+    // ========================
+    // BENTO LIGHTBOX
+    // ========================
+    const lightbox      = document.getElementById("lightbox");
+    const lightboxImg   = document.getElementById("lightboxImg");
+    const lightboxCap   = document.getElementById("lightboxCaption");
+    const lightboxClose = document.getElementById("lightboxClose");
+    const lightboxBack  = document.getElementById("lightboxBackdrop");
+
+    function openLightbox(src, alt) {
+        lightboxImg.src = src;
+        lightboxImg.alt = alt;
+        lightboxCap.textContent = alt;
+        lightbox.classList.add("is-open");
+        document.body.style.overflow = "hidden";
+        lightboxClose.focus();
+    }
+
+    function closeLightbox() {
+        lightbox.classList.remove("is-open");
+        document.body.style.overflow = "";
+        setTimeout(() => { lightboxImg.src = ""; }, 320);
+    }
+
+    if (lightbox) {
+        document.querySelectorAll(".bento-card").forEach(card => {
+            card.addEventListener("click", e => {
+                if (e.target.closest(".scopri-btn")) return;
+                const img = card.querySelector("img");
+                if (!img) return;
+                // Usa la versione xl webp per la qualità massima in lightbox
+                const xlWebp = img.src.replace(/(-xl)?\.jpg$/, "-xl.webp");
+                openLightbox(xlWebp, img.alt);
+            });
+        });
+
+        lightboxClose.addEventListener("click", closeLightbox);
+        lightboxBack.addEventListener("click", closeLightbox);
+        document.addEventListener("keydown", e => {
+            if (e.key === "Escape") closeLightbox();
         });
     }
 

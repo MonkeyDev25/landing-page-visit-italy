@@ -18,8 +18,8 @@
       --bg:          #0B0B1E;
       --bg-card:     #12122B;
       --text:        #F0F0F8;
-      --text-dim:    rgba(240, 240, 248, 0.62);
-      --text-mute:   rgba(240, 240, 248, 0.35);
+      --text-dim:    rgba(240, 240, 248, 0.85);
+      --text-mute:   rgba(240, 240, 248, 0.65);
       --orange:      #FFAA53;
       --border:      rgba(255, 255, 255, 0.08);
       --transition:  0.25s ease;
@@ -364,7 +364,18 @@
   <section class="cs-hero">
     <div class="cs-hero-img">
       <!-- Sostituisci con il tuo mockup hero definitivo -->
-      <img src="https://images.unsplash.com/photo-1552832230-c0197dd311b5?auto=format&fit=crop&w=1600&q=80" alt="Visit Italy — Wanderlust Digital Experience">
+      <picture>
+        <source type="image/webp" media="(max-width: 480px)" srcset="asset/img/roma-xs.webp">
+        <source media="(max-width: 480px)" srcset="asset/img/roma-xs.jpg">
+        <source type="image/webp" media="(max-width: 768px)" srcset="asset/img/roma-sm.webp">
+        <source media="(max-width: 768px)" srcset="asset/img/roma-sm.jpg">
+        <source type="image/webp" media="(max-width: 1024px)" srcset="asset/img/roma-md.webp">
+        <source media="(max-width: 1024px)" srcset="asset/img/roma-md.jpg">
+        <source type="image/webp" media="(max-width: 1440px)" srcset="asset/img/roma-lg.webp">
+        <source media="(max-width: 1440px)" srcset="asset/img/roma-lg.jpg">
+        <source type="image/webp" srcset="asset/img/roma-xl.webp">
+        <img src="asset/img/roma-xl.jpg" alt="Visit Italy — Wanderlust Digital Experience">
+      </picture>
     </div>
 
     <div class="cs-hero-content container">
