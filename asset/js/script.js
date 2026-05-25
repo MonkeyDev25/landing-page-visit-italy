@@ -247,7 +247,7 @@ document.addEventListener("DOMContentLoaded", () => {
         opacity: 0,
         duration: isMobile ? 0.5 : 1,
         ease: isMobile ? 'power2.out' : 'back.out(1.7)',
-        delay: isMobile ? 0.3 : 1.2
+        delay: isMobile ? 0 : 1.2
     });
 
     gsap.to('.pulse-neon', {

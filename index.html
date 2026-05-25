@@ -22,8 +22,6 @@ body.nav-open{overflow:hidden}
 .navbar{position:fixed;top:0;left:0;width:100%;padding:18px 24px;display:flex;justify-content:space-between;align-items:center;z-index:200;background:rgba(2,3,9,0.4);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
 .logo{font-family:'Syne',sans-serif;font-weight:800;font-size:22px;color:var(--pure-ice);letter-spacing:-0.5px;z-index:10000}
 .logo span{color:var(--neon-mint)}
-.nav-cta-mobile{display:none}
-@media(max-width:767px){.nav-cta-mobile{display:inline-flex;align-items:center;color:var(--neon-mint);border:1px solid rgba(113,251,202,0.5);padding:7px 14px;border-radius:20px;font-family:'Inter',sans-serif;font-size:11px;font-weight:700;text-decoration:none;text-transform:uppercase;letter-spacing:1px;white-space:nowrap;transition:background .2s,color .2s;z-index:10000}}
 .nav-toggle{display:flex;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;z-index:10000}
 .nav-toggle span{display:block;width:24px;height:2px;background:var(--pure-ice);transition:transform .3s ease,opacity .3s ease;border-radius:1px}
 .nav-links{list-style:none;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:36px;position:fixed;top:0;right:0;width:100%;height:100vh;background:rgba(2,3,9,0.98);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);z-index:9998;transform:translateX(100%);transition:transform .4s cubic-bezier(0.25,1,0.5,1)}
@@ -55,7 +53,7 @@ body.nav-open{overflow:hidden}
 .ccard-progress-wrap{position:absolute;bottom:0;left:0;width:100%;height:4px;background:rgba(249,250,252,0.15);opacity:0;transition:opacity .3s ease}
 .carousel-card.active .ccard-progress-wrap{opacity:1}
 .ccard-progress-bar{height:100%;width:0%;background:var(--neon-mint)}
-@media(max-width:767px){.hero-carousel-section{padding:100px 16px 20px;height:100vh;min-height:600px}.carousel-container{flex-direction:column;height:100%;max-height:100%;gap:8px}.carousel-card{flex:0 0 12%;border-radius:20px;width:100%}.carousel-card.active{flex:1 0 45%;border-radius:20px;width:100%}.ccard-inactive-title{transform:translate(-50%,-50%) rotate(0deg);font-size:1.2rem;letter-spacing:2px}.ccard-content{padding:24px 20px}.ccard-title{font-size:2.8rem;margin-bottom:8px}.ccard-text{font-size:.95rem}}
+@media(max-width:767px){.navbar{display:none}.hero-carousel-section{padding:0 16px 20px;height:100vh;min-height:600px}.carousel-container{flex-direction:column;height:100%;max-height:100%;gap:8px}.carousel-card{flex:0 0 12%;border-radius:20px;width:100%}.carousel-card.active{flex:1 0 45%;border-radius:20px;width:100%}.ccard-inactive-title{transform:translate(-50%,-50%) rotate(0deg);font-size:1.2rem;letter-spacing:2px}.ccard-content{padding:24px 20px}.ccard-title{font-size:2.8rem;margin-bottom:8px}.ccard-text{font-size:.95rem}}
 @media(min-width:768px) and (max-width:1023px){.hero-carousel-section{padding:100px 30px 30px}.carousel-card{border-radius:50px}.carousel-card.active{border-radius:30px}.ccard-content{padding:40px 30px}}
     </style>
 </head>
@@ -64,7 +62,6 @@ body.nav-open{overflow:hidden}
     <!-- NAVBAR -->
     <nav class="navbar" aria-label="Navigazione principale">
         <div class="logo">Visit <span>Italy</span></div>
-        <a href="#download" class="nav-cta-mobile">Scarica l'App</a>
         <button class="nav-toggle" aria-label="Apri menu" aria-expanded="false" aria-controls="mainNavLinks">
             <span></span><span></span><span></span>
         </button>
