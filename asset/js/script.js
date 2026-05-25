@@ -242,22 +242,25 @@ document.addEventListener("DOMContentLoaded", () => {
     // FLOATING CTA
     // ========================
     const isMobile = window.innerWidth < 768;
-    gsap.from('.floating-cta', {
-        y: isMobile ? 0 : 100,
-        opacity: 0,
-        duration: isMobile ? 0.5 : 1,
-        ease: isMobile ? 'power2.out' : 'back.out(1.7)',
-        delay: isMobile ? 0 : 1.2
-    });
 
-    gsap.to('.pulse-neon', {
-        boxShadow: '0 0 25px rgba(113, 251, 202, 0.4)',
-        scale: 1.03,
-        repeat: -1,
-        yoyo: true,
-        duration: 1.8,
-        ease: 'sine.inOut'
-    });
+    if (isMobile) {
+        // Su mobile: fade-in semplice senza toccare transform (evita il translateX(-50%) desktop)
+        gsap.set('.floating-cta', { opacity: 0, clearProps: 'transform' });
+        gsap.to('.floating-cta', { opacity: 1, duration: 0.5, ease: 'power2.out' });
+    } else {
+        gsap.from('.floating-cta', {
+            y: 100, opacity: 0, duration: 1, ease: 'back.out(1.7)', delay: 1.2
+        });
+        // Pulsazione solo su desktop (su mobile causa scroll jank su iOS)
+        gsap.to('.pulse-neon', {
+            boxShadow: '0 0 25px rgba(113, 251, 202, 0.4)',
+            scale: 1.03,
+            repeat: -1,
+            yoyo: true,
+            duration: 1.8,
+            ease: 'sine.inOut'
+        });
+    }
 
     // ========================
     // MOBILE NAV TOGGLE
