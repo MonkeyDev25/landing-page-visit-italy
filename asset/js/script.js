@@ -241,8 +241,13 @@ document.addEventListener("DOMContentLoaded", () => {
     // ========================
     // FLOATING CTA
     // ========================
+    const isMobile = window.innerWidth < 768;
     gsap.from('.floating-cta', {
-        y: 100, opacity: 0, duration: 1, ease: 'back.out(1.7)', delay: 1.2
+        y: isMobile ? 0 : 100,
+        opacity: 0,
+        duration: isMobile ? 0.5 : 1,
+        ease: isMobile ? 'power2.out' : 'back.out(1.7)',
+        delay: isMobile ? 0.3 : 1.2
     });
 
     gsap.to('.pulse-neon', {
