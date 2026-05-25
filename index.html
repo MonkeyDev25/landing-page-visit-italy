@@ -16,7 +16,7 @@
     <style>
 :root{--pure-ice:#F9FAFC;--obsidian:#020309;--neon-mint:#71FBCA;--slate-grey:#4B5563;--card-ease:cubic-bezier(0.25,1,0.5,1)}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;overflow-x:hidden}
+html{scroll-behavior:smooth}
 body{background-color:var(--obsidian);font-family:'Inter',sans-serif;color:var(--pure-ice)}
 body.nav-open{overflow:hidden}
 .navbar{position:fixed;top:0;left:0;width:100%;padding:18px 24px;display:flex;justify-content:space-between;align-items:center;z-index:200;background:rgba(2,3,9,0.4);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
@@ -637,7 +637,15 @@ body.nav-open{overflow:hidden}
     </footer>
 
 
-<!-- Scroll To Top Button -->
+    <!-- FLOATING CTA -->
+    <div class="floating-cta">
+        <a href="#download" class="pulse-neon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Scarica App
+        </a>
+    </div>
+
+    <!-- Scroll To Top Button -->
     <button id="btnGoTop" class="btn-go-top" aria-label="Torna in alto">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><polyline points="18 15 12 9 6 15"/></svg>
     </button>

@@ -239,6 +239,12 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // ========================
+    // FLOATING CTA
+    // ========================
+    gsap.set('.floating-cta', { opacity: 0 });
+    gsap.to('.floating-cta', { opacity: 1, duration: 0.6, ease: 'power2.out', delay: 0.8 });
+
+    // ========================
     // MOBILE NAV TOGGLE
     // ========================
     const navToggle = document.querySelector(".nav-toggle");
