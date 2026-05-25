@@ -239,30 +239,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // ========================
-    // FLOATING CTA
-    // ========================
-    const isMobile = window.innerWidth < 768;
-
-    if (isMobile) {
-        // Su mobile: fade-in semplice senza toccare transform (translate3d resta dal CSS)
-        gsap.set('.floating-cta', { opacity: 0 });
-        gsap.to('.floating-cta', { opacity: 1, duration: 0.5, ease: 'power2.out' });
-    } else {
-        gsap.from('.floating-cta', {
-            y: 100, opacity: 0, duration: 1, ease: 'back.out(1.7)', delay: 1.2
-        });
-        // Pulsazione solo su desktop (su mobile causa scroll jank su iOS)
-        gsap.to('.pulse-neon', {
-            boxShadow: '0 0 25px rgba(113, 251, 202, 0.4)',
-            scale: 1.03,
-            repeat: -1,
-            yoyo: true,
-            duration: 1.8,
-            ease: 'sine.inOut'
-        });
-    }
-
-    // ========================
     // MOBILE NAV TOGGLE
     // ========================
     const navToggle = document.querySelector(".nav-toggle");
