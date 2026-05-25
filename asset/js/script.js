@@ -244,8 +244,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const isMobile = window.innerWidth < 768;
 
     if (isMobile) {
-        // Su mobile: fade-in semplice senza toccare transform (evita il translateX(-50%) desktop)
-        gsap.set('.floating-cta', { opacity: 0, clearProps: 'transform' });
+        // Su mobile: fade-in semplice senza toccare transform (translate3d resta dal CSS)
+        gsap.set('.floating-cta', { opacity: 0 });
         gsap.to('.floating-cta', { opacity: 1, duration: 0.5, ease: 'power2.out' });
     } else {
         gsap.from('.floating-cta', {
