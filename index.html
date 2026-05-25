@@ -11,7 +11,51 @@
     <link rel="preload" as="image" href="asset/img/roma-xs.webp" imagesrcset="asset/img/roma-xs.webp 480w, asset/img/roma-sm.webp 768w, asset/img/roma-md.webp 1024w, asset/img/roma-lg.webp 1440w, asset/img/roma-xl.webp 1920w" imagesizes="100vw">
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Syne:wght@700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Syne:wght@700;800&display=swap"></noscript>
-    <link rel="stylesheet" href="asset/css/stile.css?v=12">
+    <link rel="preload" href="asset/css/stile.css?v=13" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="asset/css/stile.css?v=13"></noscript>
+    <style>
+:root{--pure-ice:#F9FAFC;--obsidian:#020309;--neon-mint:#71FBCA;--slate-grey:#4B5563;--card-ease:cubic-bezier(0.25,1,0.5,1)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background-color:var(--obsidian);font-family:'Inter',sans-serif;color:var(--pure-ice);overflow-x:hidden}
+body.nav-open{overflow:hidden}
+.navbar{position:fixed;top:0;left:0;width:100%;padding:18px 24px;display:flex;justify-content:space-between;align-items:center;z-index:200;background:rgba(2,3,9,0.4);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.logo{font-family:'Syne',sans-serif;font-weight:800;font-size:22px;color:var(--pure-ice);letter-spacing:-0.5px;z-index:10000}
+.logo span{color:var(--neon-mint)}
+.nav-toggle{display:flex;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;z-index:10000}
+.nav-toggle span{display:block;width:24px;height:2px;background:var(--pure-ice);transition:transform .3s ease,opacity .3s ease;border-radius:1px}
+.nav-links{list-style:none;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:36px;position:fixed;top:0;right:0;width:100%;height:100vh;background:rgba(2,3,9,0.98);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);z-index:9998;transform:translateX(100%);transition:transform .4s cubic-bezier(0.25,1,0.5,1)}
+.nav-open .nav-links{transform:translateX(0)}
+.nav-links a{color:rgba(249,250,252,0.95);text-decoration:none;font-family:'Inter',sans-serif;font-size:1.5rem;font-weight:500;text-transform:uppercase;letter-spacing:3px;transition:color .2s}
+.nav-open .nav-toggle span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-open .nav-toggle span:nth-child(2){opacity:0}
+.nav-open .nav-toggle span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+@media(min-width:768px){.nav-toggle{display:none}.nav-links{position:static;flex-direction:row;width:auto;height:auto;background:transparent;transform:none;transition:none;gap:32px;backdrop-filter:none;-webkit-backdrop-filter:none}.navbar{padding:20px 50px}.nav-links a{font-size:12px;letter-spacing:1.5px}}
+.nav-links a:hover{color:var(--neon-mint)}
+.nav-cta{color:var(--neon-mint)!important;border:1px solid rgba(113,251,202,0.5);padding:8px 20px;border-radius:20px;transition:background .2s,color .2s!important}
+.nav-cta:hover{background:var(--neon-mint)!important;color:var(--obsidian)!important}
+.hero-carousel-section{position:relative;width:100%;height:100vh;min-height:700px;background-color:var(--obsidian);display:flex;align-items:center;justify-content:center;overflow:hidden;padding:100px 20px 40px}
+.carousel-container{position:relative;width:100%;max-width:1800px;height:75vh;min-height:600px;display:flex;gap:16px}
+.carousel-card{position:relative;flex:0 0 6%;height:100%;border-radius:80px;overflow:hidden;cursor:pointer;transition:flex .7s cubic-bezier(0.25,1,0.5,1),border-radius .7s cubic-bezier(0.25,1,0.5,1)}
+.carousel-card.active{flex:1 0 75%;border-radius:40px;cursor:default}
+.ccard-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(0.7);transition:filter .7s ease,transform .7s ease}
+.carousel-card:hover:not(.active) .ccard-bg{filter:brightness(0.9);transform:scale(1.05)}
+.carousel-card.active .ccard-bg{filter:brightness(1)}
+.ccard-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(2,3,9,0.95) 0%,rgba(2,3,9,0.3) 50%,rgba(2,3,9,0) 100%);opacity:0;transition:opacity .5s ease}
+.carousel-card.active .ccard-overlay{opacity:1}
+.ccard-inactive-title{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) rotate(-90deg);font-family:'Syne',sans-serif;font-weight:700;font-size:1.5rem;color:var(--pure-ice);white-space:nowrap;opacity:1;transition:opacity .4s ease;pointer-events:none;text-shadow:0 2px 10px rgba(0,0,0,0.5)}
+.carousel-card.active .ccard-inactive-title{opacity:0}
+.ccard-content{position:absolute;bottom:0;left:0;width:100%;padding:50px 60px;opacity:0;transform:translateY(20px);transition:opacity .4s ease .2s,transform .5s ease .2s;pointer-events:none}
+.carousel-card.active .ccard-content{opacity:1;transform:translateY(0);pointer-events:auto}
+.ccard-tag{font-family:'Inter',sans-serif;font-size:13px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--neon-mint);margin-bottom:12px;display:block}
+.ccard-title{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(3.5rem,7vw,7.5rem);color:var(--pure-ice);line-height:1;margin-bottom:16px;letter-spacing:-2px}
+.ccard-text{font-family:'Inter',sans-serif;font-size:1.15rem;color:rgba(249,250,252,0.85);max-width:420px;line-height:1.6}
+.ccard-progress-wrap{position:absolute;bottom:0;left:0;width:100%;height:4px;background:rgba(249,250,252,0.15);opacity:0;transition:opacity .3s ease}
+.carousel-card.active .ccard-progress-wrap{opacity:1}
+.ccard-progress-bar{height:100%;width:0%;background:var(--neon-mint)}
+@media(max-width:767px){.hero-carousel-section{padding:100px 16px 20px;height:100vh;min-height:600px}.carousel-container{flex-direction:column;height:100%;max-height:100%;gap:8px}.carousel-card{flex:0 0 12%;border-radius:20px;width:100%}.carousel-card.active{flex:1 0 45%;border-radius:20px;width:100%}.ccard-inactive-title{transform:translate(-50%,-50%) rotate(0deg);font-size:1.2rem;letter-spacing:2px}.ccard-content{padding:24px 20px}.ccard-title{font-size:2.8rem;margin-bottom:8px}.ccard-text{font-size:.95rem}}
+@media(min-width:768px) and (max-width:1023px){.hero-carousel-section{padding:100px 30px 30px}.carousel-card{border-radius:50px}.carousel-card.active{border-radius:30px}.ccard-content{padding:40px 30px}}
+    </style>
 </head>
 <body>
 
