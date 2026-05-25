@@ -9,9 +9,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function heroGoTo(index) {
         if (!heroCards.length) return;
-        
+
         heroCards.forEach(card => {
             card.classList.remove("active");
+            card.setAttribute("tabindex", "0");
+            card.setAttribute("aria-current", "false");
             const pbar = card.querySelector(".ccard-progress-bar");
             if (pbar) {
                 gsap.killTweensOf(pbar);
@@ -22,6 +24,8 @@ document.addEventListener("DOMContentLoaded", () => {
         currentHero = ((index % heroCards.length) + heroCards.length) % heroCards.length;
         const activeCard = heroCards[currentHero];
         activeCard.classList.add("active");
+        activeCard.setAttribute("tabindex", "-1");
+        activeCard.setAttribute("aria-current", "true");
 
         // Animate progress bar of active card
         const activeBar = activeCard.querySelector(".ccard-progress-bar");
@@ -38,9 +42,14 @@ document.addEventListener("DOMContentLoaded", () => {
             card.addEventListener("click", () => {
                 if (i !== currentHero) heroGoTo(i);
             });
+            card.addEventListener("keydown", e => {
+                if ((e.key === "Enter" || e.key === " ") && i !== currentHero) {
+                    e.preventDefault();
+                    heroGoTo(i);
+                }
+            });
         });
-        // Init the first slide
-        setTimeout(() => heroGoTo(0), 100); // slight delay to let DOM settle
+        setTimeout(() => heroGoTo(0), 100);
     }
 
     // ========================
@@ -267,11 +276,15 @@ document.addEventListener("DOMContentLoaded", () => {
     const navToggle = document.querySelector(".nav-toggle");
     if (navToggle) {
         navToggle.addEventListener("click", () => {
-            document.body.classList.toggle("nav-open");
+            const isOpen = document.body.classList.toggle("nav-open");
+            navToggle.setAttribute("aria-expanded", String(isOpen));
+            navToggle.setAttribute("aria-label", isOpen ? "Chiudi menu" : "Apri menu");
         });
         document.querySelectorAll(".nav-links a").forEach(link => {
             link.addEventListener("click", () => {
                 document.body.classList.remove("nav-open");
+                navToggle.setAttribute("aria-expanded", "false");
+                navToggle.setAttribute("aria-label", "Apri menu");
             });
         });
     }
@@ -306,9 +319,17 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (e.target.closest(".scopri-btn")) return;
                 const img = card.querySelector("img");
                 if (!img) return;
-                // Usa la versione xl webp per la qualità massima in lightbox
                 const xlWebp = img.src.replace(/(-xl)?\.jpg$/, "-xl.webp");
                 openLightbox(xlWebp, img.alt);
+            });
+            card.addEventListener("keydown", e => {
+                if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    const img = card.querySelector("img");
+                    if (!img) return;
+                    const xlWebp = img.src.replace(/(-xl)?\.jpg$/, "-xl.webp");
+                    openLightbox(xlWebp, img.alt);
+                }
             });
         });
 
