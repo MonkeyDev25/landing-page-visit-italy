@@ -445,57 +445,21 @@ body.nav-open {
     margin-top: 6px;
 }
 
-/* Floating tech graphic */
+/* Floating app screenshot */
 .manifesto-float {
     position: absolute;
-    right: 7%;
-    top: 12%;
-    width: 180px;
-    height: 180px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    right: 5%;
+    top: 8%;
+    width: 220px;
     pointer-events: none;
 }
 
-.float-ring {
-    position: absolute;
-    border-radius: 50%;
-    border: 1px solid rgba(113, 251, 202, 0.18);
-}
-.float-ring--outer { width: 180px; height: 180px; }
-.float-ring--inner { width: 110px; height: 110px; border-color: rgba(113, 251, 202, 0.30); }
-
-.float-crosshair {
-    position: relative;
-    width: 60px; height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.ch-h, .ch-v { position: absolute; background: rgba(113, 251, 202, 0.45); }
-.ch-h { width: 50px; height: 1px; }
-.ch-v { width: 1px; height: 50px; }
-.ch-dot {
-    position: absolute;
-    width: 6px; height: 6px;
-    border-radius: 50%;
-    background: var(--neon-mint);
-    box-shadow: 0 0 10px rgba(113, 251, 202, 0.8);
-}
-
-.float-label {
-    position: absolute;
-    bottom: -28px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-family: 'Inter', sans-serif;
-    font-size: 8px;
-    font-weight: 600;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: rgba(113, 251, 202, 0.4);
-    white-space: nowrap;
+.manifesto-app-img {
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(113, 251, 202, 0.15);
+    display: block;
 }
 
 @media (max-width: 768px) {
@@ -519,7 +483,7 @@ body.nav-open {
     .stat-number { font-size: 1.8rem; letter-spacing: -1px; }
     .stat-label { font-size: 8px; letter-spacing: 1px; }
     
-    .manifesto-float { position: relative; right: auto; top: auto; margin: 60px auto 0; transform: scale(0.9); }
+    .manifesto-float { position: relative; right: auto; top: auto; width: 180px; margin: 60px auto 0; }
 }
 @media (max-width: 480px) {
     .manifesto-section { padding: 80px 20px 80px; }
@@ -835,7 +799,7 @@ body.nav-open {
     font-weight: 600;
     letter-spacing: 2.5px;
     text-transform: uppercase;
-    color: rgba(249, 250, 252, 0.45);
+    color: rgba(249, 250, 252, 0.75);
 }
 
 .lightbox-close {
@@ -1154,7 +1118,7 @@ body.nav-open {
     font-size: 0.72rem;
     letter-spacing: 4px;
     text-transform: uppercase;
-    color: rgba(249, 250, 252, 0.45);
+    color: rgba(249, 250, 252, 0.7);
     padding: 0 16px;
 }
 @keyframes ticker-scroll {

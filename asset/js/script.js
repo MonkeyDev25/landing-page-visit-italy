@@ -100,22 +100,6 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
 
-        // Float rings continuous rotation
-        gsap.to(".float-ring--outer", {
-            rotation: 360,
-            duration: 22,
-            ease: "none",
-            repeat: -1,
-            transformOrigin: "center center"
-        });
-        gsap.to(".float-ring--inner", {
-            rotation: -360,
-            duration: 15,
-            ease: "none",
-            repeat: -1,
-            transformOrigin: "center center"
-        });
-
         // --- Sezione 3: Discovery Grid ---
         const discoveryTl = gsap.timeline({
             scrollTrigger: { trigger: ".discovery-section", start: "top 80%" }

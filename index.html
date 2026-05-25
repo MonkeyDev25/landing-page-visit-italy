@@ -263,14 +263,12 @@ body.nav-open{overflow:hidden}
             </div>
 
             <div class="manifesto-float" aria-hidden="true">
-                <div class="float-ring float-ring--outer"></div>
-                <div class="float-ring float-ring--inner"></div>
-                <div class="float-crosshair">
-                    <span class="ch-h"></span>
-                    <span class="ch-v"></span>
-                    <span class="ch-dot"></span>
-                </div>
-                <div class="float-label">IT · 2026</div>
+                <picture>
+                    <source type="image/webp" media="(max-width: 480px)" srcset="asset/img/mappa-interattiva-master-v2-xs.webp">
+                    <source type="image/webp" media="(max-width: 768px)" srcset="asset/img/mappa-interattiva-master-v2-sm.webp">
+                    <source type="image/webp" srcset="asset/img/mappa-interattiva-master-v2-md.webp">
+                    <img class="manifesto-app-img" src="asset/img/mappa-interattiva-master-v2-md.jpg" alt="" loading="lazy">
+                </picture>
             </div>
         </section>
 
